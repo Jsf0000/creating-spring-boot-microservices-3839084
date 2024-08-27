@@ -2,6 +2,8 @@ package com.example.explorecalijpa;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,8 @@ public class ExplorecaliJpaApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        Path currentPath = Paths.get("").toAbsolutePath();
+        System.out.println("Current working directory: " + currentPath);
         createTourAllPackages();
         System.out.println("Persisted Packages = " + tourPackageService.total());
         createToursFromFile(TOUR_IMPORT_FILE);
